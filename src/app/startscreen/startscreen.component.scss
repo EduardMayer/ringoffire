@@ -11,7 +11,8 @@
 
 .startTitle {
     position: absolute;
-    top: -215px;
+    top: -220px;
+    height: 200px;
     text-align: center;
     background-color: white;
     border-radius: 20px;
@@ -33,9 +34,12 @@
     }
 
     h1 {
-        margin-top: 0;
         font-size: 60px;
         color: black;
+        font-weight: 600;
+        line-height: 62px;
+        margin: 15px 0px 0px 0px;
+        
     }
 }
 
