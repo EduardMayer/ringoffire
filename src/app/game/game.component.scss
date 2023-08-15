@@ -56,3 +56,25 @@
     right: 0;
 
 }
+
+.addButton{
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    background-color: red;
+
+    &:hover{
+        background-color: black;
+    }
+}
+
+.rulesContainer{
+    position: absolute;
+    bottom: 20px;
+    left: 100px;
+    right: 100px;
+    border-radius: 15px;
+    background-color: white;
+    
+}
+
