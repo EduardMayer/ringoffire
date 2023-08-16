@@ -1,7 +1,7 @@
 .player{
     display: flex;
     align-items: center;
-    width: 300px;
+    width: 250px;
     height: 50px;
     background-color: white;
     border-top-left-radius: 50px;
@@ -25,4 +25,40 @@
 
 .player-active{
     background-color: red;
+}
+
+@media only screen and (max-width: 660px) {
+    .player{
+        border-top-right-radius: 50px;
+        border-bottom-right-radius: 50px;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+        justify-content: space-between;
+        flex-direction: row-reverse;
+    }
+}
+
+
+@media only screen and (max-width: 480px) {
+    .player{
+        width: 170px;
+        height: 35px;
+    
+        span{
+            color: black;
+            font-size: 16px;
+            margin-left: 16px;
+            
+        }
+    
+        img{
+            width: 30px;
+            height: 30px;
+            object-fit: cover;
+            border-radius: 100%;
+            margin-left: 5px;
+        }
+
+    
+    }
 }

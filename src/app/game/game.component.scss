@@ -1,80 +1,185 @@
-.field{
-    width: 100vw;
-    height: 100vh;
-    max-width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    
+.field {
+  width: 100vw;
+  height: 100vh;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.cardStack{
-    position: relative;
-    img{
-        position: absolute;
-        width: 175px;
-    }
-}
-
-.topCard{
-    cursor: pointer;
-    transition: all 125ms ease-in-out;
-    &:hover{
-        transform: scale(1.1) translateY(-10px);
-    }
-}
-
-.pickCard{
-    transition: all 125ms ease-in-out;
-    animation: pickCardAnimation 1.0s ease-in-out;
-    transform: scale(1.0) translateX(150px) translateY(-300px) rotate(-10deg);  
-}
-
-.playedCard{
-    right: 25px;
-    transform: scale(1.0) translateX(150px) translateY(-300px) rotate(-10deg);  
-}
-
-@keyframes pickCardAnimation{
-    0%{
-        transform: scale(1.0);
-    }
-    40%{
-        transform: scale(1.45); 
-    }
-    60%{
-        transform: scale(1.45); 
-    }
-    100%{
-        transform: scale(1.0) translateX(150px) translateY(-300px) rotate(-10deg); 
-    } 
-}
-
-.playerPosition{
+.cardStack {
+  position: relative;
+  left: -130px;
+  img {
     position: absolute;
-    right: 0;
-
+    width: 175px;
+  }
 }
 
-.addButton{
+.topCard {
+  cursor: pointer;
+  transition: all 125ms ease-in-out;
+  &:hover {
+    transform: scale(1.1) translateY(-10px);
+  }
+}
+
+.pickCard {
+  transition: all 125ms ease-in-out;
+  animation: pickCardAnimation 1s ease-in-out;
+  transform: scale(1) translateX(210px) translateY(-220px) rotate(-10deg);
+}
+
+.playedCard {
+  right: 20px;
+  transform: scale(1) translateX(210px) translateY(-220px) rotate(-10deg);
+}
+
+@keyframes pickCardAnimation {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.45);
+  }
+  60% {
+    transform: scale(1.45);
+  }
+  100% {
+    transform: scale(1) translateX(210px) translateY(-220px) rotate(-10deg);
+  }
+}
+
+.playerPosition {
+  position: absolute;
+  right: 0;
+}
+
+.addButton {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  background-color: red;
+
+  &:hover {
+    background-color: black;
+  }
+}
+
+.rulesContainer {
+  position: absolute;
+  bottom: 20px;
+  left: 100px;
+  right: 100px;
+  border-radius: 15px;
+  background-color: white;
+}
+
+.requimentContainer {
+  position: absolute;
+  left: 75px;
+  right: 75px;
+  top: 50%;
+}
+
+@media only screen and (max-height: 745px) {
+  .requimentContainer {
+    top: 5%;
+  }
+  .cardStack {
+    position: absolute;
+    width: 120px;
+    height: 160px;
+    bottom: 160px;
+    left: 80px;
+    img {
+      width: 120px;
+    }
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .rulesContainer {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    border-radius: 0px;
+    bottom: 0px;
+  }
+
+  .addButton {
     position: absolute;
     right: 20px;
-    bottom: 20px;
+    bottom: 130px;
     background-color: red;
+  }
 
-    &:hover{
-        background-color: black;
-    }
-}
-
-.rulesContainer{
+  .cardStack {
     position: absolute;
-    bottom: 20px;
-    left: 100px;
-    right: 100px;
-    border-radius: 15px;
-    background-color: white;
-    
+    width: 120px;
+    height: 160px;
+    bottom: 160px;
+    left: 80px;
+    img {
+      width: 120px;
+    }
+  }
+}
+@media only screen and (max-width: 660px) {
+  .playerPosition {
+    left: 0;
+  }
+
+  .cardStack {
+    position: absolute;
+    width: 120px;
+    height: 160px;
+    bottom: 120px;
+    left: 80px;
+}
 }
 
+@media only screen and (max-width: 480px) {
+  .requimentContainer {
+    top: 30%;
+    left: 30px;
+    right: 30px;
+  }
+
+  .cardStack {
+    position: absolute;
+    width: 120px;
+    height: 160px;
+    bottom: 120px;
+    left: 80px;
+    img {
+      width: 110px;
+    }
+  }
+
+  .pickCard {
+    transition: all 125ms ease-in-out;
+    animation: pickCardAnimationResponsive 1s ease-in-out; /* Neue Animation verwenden */
+    transform: scale(1) translateX(138px) translateY(-190px) rotate(-10deg);
+  }
+
+  .playedCard {
+    right: 20px;
+    transform: scale(1) translateX(138px) translateY(-190px) rotate(-10deg);
+  }
+
+  @keyframes pickCardAnimationResponsive {
+    0% {
+      transform: scale(1);
+    }
+    40% {
+      transform: scale(1.45);
+    }
+    60% {
+      transform: scale(1.45);
+    }
+    100% {
+      transform: scale(1) translateX(138px) translateY(-190px) rotate(-10deg);
+    }
+  }
+}

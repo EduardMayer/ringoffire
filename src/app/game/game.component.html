@@ -1,4 +1,4 @@
-<app-player *ngFor="let player of game.players; let i = index" [ngStyle]="{'top.px': 30 + (i * 70)}"
+<app-player *ngFor="let player of game.players; let i = index" [ngStyle]="{'top.px': 10 + (i * 60)}"
     [playerActive]=" i == game.currentPlayer" [name]="player" class="playerPosition"></app-player>
 
 <div class="field">
@@ -20,6 +20,32 @@
 
     </div>
 </div>
+
+<div *ngIf="!pickCardAnimation && game.players.length < 2" class="requimentContainer">
+    <mat-card class="example-card">
+        <mat-card-header>
+            <mat-card-title [style.color]="'red'">Two-Player Requirement!</mat-card-title>
+
+        </mat-card-header>
+        <mat-card-content>
+            <b>Cheers to Ring of Fire - the ultimate drinking game! Create two to seven players, grab your drinks, and
+                gear up for a hilarious and intoxicating gaming experience. It's time to double the laughter,
+                challenges, and sips in this entertaining drinking adventure!.</b>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+<div *ngIf="showMaxPlayersCard" class="requimentContainer">
+    <mat-card class="example-card">
+        <mat-card-header>
+            <mat-card-title [style.color]="'red'">7 Players only!</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <b>Only 7 players can be created</b>
+        </mat-card-content>
+    </mat-card>
+</div>
+
 
 <app-game-info [card]="currentCard" class="rulesContainer"></app-game-info>
 <button mat-fab color="primary" (click)="openDialog()" class="addButton">

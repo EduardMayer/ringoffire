@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit} from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-game-info',
@@ -6,7 +6,6 @@ import { Component, Input, OnChanges, OnInit} from '@angular/core';
   styleUrls: ['./game-info.component.scss'],
 })
 export class GameInfoComponent implements OnInit, OnChanges {
-
   cardActions = [
     {
       cardName: 'Two for You',
@@ -32,8 +31,7 @@ export class GameInfoComponent implements OnInit, OnChanges {
     },
     {
       cardName: 'Heaven',
-      description:
-        'Everyone points to the sky, the last person drinks.',
+      description: 'Everyone points to the sky, the last person drinks.',
     },
     {
       cardName: 'Mate',
@@ -63,7 +61,7 @@ export class GameInfoComponent implements OnInit, OnChanges {
     {
       cardName: 'Kings Cup',
       description:
-        "Pour a little bit of your drink into a communal cup. The person who draws the fourth King must drink the entire cup.",
+        'Pour a little bit of your drink into a communal cup. The person who draws the fourth King must drink the entire cup.',
     },
     {
       cardName: 'Waterfall',
@@ -72,20 +70,18 @@ export class GameInfoComponent implements OnInit, OnChanges {
     },
   ];
 
-  cardName= '';
-  description= '';
-  @Input()card: string | undefined;
+  cardName = '';
+  description = '';
+  @Input() card: string | undefined;
 
-  ngOnInit(): void{
-  }
+  ngOnInit(): void {}
 
   ngOnChanges(): void {
-    if(this.card){
-    console.log("currend card is", this.card?.split('_')[1]);
-    let cardNumber = +this.card.split('_')[1];
-    this.cardName = this.cardActions[cardNumber - 1].cardName;
-    this.description = this.cardActions[cardNumber - 1].description;
+    if (this.card) {
+      console.log('currend card is', this.card?.split('_')[1]);
+      let cardNumber = +this.card.split('_')[1];
+      this.cardName = this.cardActions[cardNumber - 1].cardName;
+      this.description = this.cardActions[cardNumber - 1].description;
     }
   }
-  }
-
+}
