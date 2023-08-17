@@ -78,7 +78,6 @@ export class GameInfoComponent implements OnInit, OnChanges {
 
   ngOnChanges(): void {
     if (this.card) {
-      console.log('currend card is', this.card?.split('_')[1]);
       let cardNumber = +this.card.split('_')[1];
       this.cardName = this.cardActions[cardNumber - 1].cardName;
       this.description = this.cardActions[cardNumber - 1].description;

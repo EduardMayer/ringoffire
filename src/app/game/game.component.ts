@@ -13,6 +13,7 @@ export class GameComponent implements OnInit {
   currentCard: string | undefined;
   game!: Game;
   showMaxPlayersCard: boolean | undefined;
+  allCardsDrawn: boolean = false;
 
   constructor(public dialog: MatDialog) {}
 
@@ -25,12 +26,17 @@ export class GameComponent implements OnInit {
   }
 
   takeCard() {
-    if (!this.pickCardAnimation && this.game.players.length >= 2) {
-    this.pickCard();
+    if (this.game.stack.length === 0) {
+      this.allCardsDrawn = true;
+      return;
+    }
+  
+    if (this.game.players.length >= 2) {
+      this.pickCard();
     }
   }
 
-  pickCard(){
+  pickCard() {
     this.currentCard = this.game.stack.pop();
     this.pickCardAnimation = true;
     this.game.currentPlayer++;
@@ -43,7 +49,7 @@ export class GameComponent implements OnInit {
   }
 
   openDialog(): void {
-    if (this.game.players.length < 7) {
+    if (this.game.players.length < 6) {
       const dialogRef = this.dialog.open(AddPlayerDialogComponent);
       dialogRef.afterClosed().subscribe((name) => {
         if (name && name.length > 0) {

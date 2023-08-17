@@ -4,19 +4,19 @@
 <div class="field">
     <div class="cardStack">
 
-        <!-- Card stack-->
-        <img [ngStyle]="{'right.px' : i * 5}" *ngFor="let c of [0,1,2,3,4]; let i = index;"
-            src="/assets/img/cardback.png">
+        <!-- Card stack -->
+        <ng-container *ngIf="!allCardsDrawn">
+            <img [ngStyle]="{'right.px' : i * 5}" *ngFor="let c of [0,1,2,3,4]; let i = index;"
+                src="/assets/img/cardback.png">
+            <img (click)="takeCard()" class="topCard" style="right: 25px" src="/assets/img/cardback.png">
+        </ng-container>
 
-        <img (click)="takeCard()" class="topCard" style="right: 25px" src="/assets/img/cardback.png">
-
-        <!-- Stack for played cards-->
+        <!-- Stack for played cards -->
         <img *ngFor="let card of game.playedCards" class="playedCard" src="/assets/img/cards/{{ card }}.png">
 
-        <!-- Current card animation-->
+        <!-- Current card animation -->
         <img (click)="takeCard()" *ngIf="pickCardAnimation" class="pickCard" style="right: 25px"
             src="/assets/img/cards/{{ currentCard }}.png">
-
 
     </div>
 </div>
@@ -24,13 +24,19 @@
 <div *ngIf="!pickCardAnimation && game.players.length < 2" class="requimentContainer">
     <mat-card class="example-card">
         <mat-card-header>
-            <mat-card-title [style.color]="'red'">Two-Player Requirement!</mat-card-title>
+            <mat-card-title [style.color]="'red'">
+                <h1>Two-Player Requirement</h1>
+            </mat-card-title>
+            <mat-card-subtitle></mat-card-subtitle>
 
         </mat-card-header>
         <mat-card-content>
-            <b>Cheers to Ring of Fire - the ultimate drinking game! Create two to seven players, grab your drinks, and
-                gear up for a hilarious and intoxicating gaming experience. It's time to double the laughter,
-                challenges, and sips in this entertaining drinking adventure!.</b>
+            <h2>Ring of Fire - Your Ultimate Drinking Game
+                Adventure!</h2>
+            <b>Raise your glasses to "Ring of Fire" - the ultimate drinking game! Gather a group of two to six players,
+                each armed with their favorite beverages, and get ready for a side-splitting and intoxicating gaming
+                extravaganza. Prepare to double the fun, the dares, and the sips as you embark on this uproarious and
+                spirited drinking journey!</b>
         </mat-card-content>
     </mat-card>
 </div>
@@ -38,10 +44,10 @@
 <div *ngIf="showMaxPlayersCard" class="requimentContainer">
     <mat-card class="example-card">
         <mat-card-header>
-            <mat-card-title [style.color]="'red'">7 Players only!</mat-card-title>
+            <mat-card-title [style.color]="'red'">Number of players reached</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-            <b>Only 7 players can be created</b>
+            <b>The limit of 6 players has been reached</b>
         </mat-card-content>
     </mat-card>
 </div>
