@@ -1,10 +1,10 @@
 export class Game {
     public players: string[] = [];
-    public playerImages: string[] = [];
     public stack: string[] = [];
     public playedCards: string[] = [];
     public currentPlayer: number = 0;
-    
+    public pickCardAnimation = false;
+    public currentCard: string = '';
 
     constructor() {
         for (let i = 1; i < 14; i++) {
@@ -13,16 +13,26 @@ export class Game {
             this.stack.push('diamonds_' + i);
             this.stack.push('hearts_' + i);
         }
-        shuffleArray(this.stack);
+        this.shuffleArray(this.stack);
+    }
+
+    public toJson() {
+        return {
+            players: this.players,
+            stack: this.stack,
+            playedCards: this.playedCards,
+            currentPlayer: this.currentPlayer,
+            pickCardAnimation: this.pickCardAnimation,
+            currentCard: this.currentCard
+        };
+    }
+
+
+    shuffleArray(array: any[]) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
     }
 
 }
-function shuffleArray(array: any[]) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-}
-
-
-

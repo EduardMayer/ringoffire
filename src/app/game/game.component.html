@@ -7,25 +7,25 @@
         <!-- Card stack -->
         <ng-container *ngIf="!allCardsDrawn">
             <img [ngStyle]="{'right.px' : i * 5}" *ngFor="let c of [0,1,2,3,4]; let i = index;"
-                src="/assets/img/cardback.png">
-            <img (click)="takeCard()" class="topCard" style="right: 25px" src="/assets/img/cardback.png">
+                src="assets/img/cardback.png">
+            <img (click)="takeCard()" class="topCard" style="right: 25px" src="assets/img/cardback.png">
         </ng-container>
 
         <!-- Stack for played cards -->
-        <img *ngFor="let card of game.playedCards" class="playedCard" src="/assets/img/cards/{{ card }}.png">
+        <img *ngFor="let card of game.playedCards" class="playedCard" src="assets/img/cards/{{ card }}.png">
 
         <!-- Current card animation -->
-        <img (click)="takeCard()" *ngIf="pickCardAnimation" class="pickCard" style="right: 25px"
-            src="/assets/img/cards/{{ currentCard }}.png">
+        <img (click)="takeCard()" *ngIf="game.pickCardAnimation" class="pickCard" style="right: 25px"
+            src="assets/img/cards/{{ game.currentCard }}.png">
 
     </div>
 </div>
 
-<div *ngIf="!pickCardAnimation && game.players.length < 2" class="requimentContainer">
+<div *ngIf="!game.pickCardAnimation && game.players.length < 2" class="requimentContainer">
     <mat-card class="example-card">
         <mat-card-header>
             <mat-card-title [style.color]="'red'">
-                <h1>Two-Player Requirement</h1>
+                <h1>Two Players Required</h1>
             </mat-card-title>
             <mat-card-subtitle></mat-card-subtitle>
 
@@ -53,7 +53,7 @@
 </div>
 
 
-<app-game-info [card]="currentCard" class="rulesContainer"></app-game-info>
+<app-game-info [card]="game.currentCard" class="rulesContainer"></app-game-info>
 <button mat-fab color="primary" (click)="openDialog()" class="addButton">
     <mat-icon>person_add</mat-icon>
 </button>

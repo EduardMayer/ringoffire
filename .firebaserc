@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ring-of-fire-em": {
+      "hosting": {
+        "ringoffire": [
+          "ring-of-fire-em"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ring-of-fire-em"
+  }
+}
