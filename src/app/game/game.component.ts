@@ -16,7 +16,12 @@ export class GameComponent implements OnInit {
   firestore: Firestore = inject(Firestore);
   showMaxPlayersCard: boolean | undefined;
   allCardsDrawn: boolean = false;
+  sound: HTMLAudioElement;
+  
+
   constructor(private route: ActivatedRoute, public dialog: MatDialog) {
+    this.sound = new Audio();
+    this.sound.src = 'assets/sound/dealing-card.wav';
   }
 
   ngOnInit(): void {
@@ -57,6 +62,7 @@ export class GameComponent implements OnInit {
     this.game.pickCardAnimation = true;
     this.game.currentPlayer++;
     this.game.currentPlayer = this.game.currentPlayer % this.game.players.length;
+    this.playSound();
     this.saveGame();
     setTimeout(() => {
       this.game.playedCards.push(this.game.currentCard!);
@@ -89,5 +95,9 @@ export class GameComponent implements OnInit {
   saveGame(){
     const itemDoc = doc(this.firestore, 'games', this.gameId);
     updateDoc(itemDoc, this.game.toJson());
+  }
+
+  playSound() {
+    this.sound.play();
   }
 }
